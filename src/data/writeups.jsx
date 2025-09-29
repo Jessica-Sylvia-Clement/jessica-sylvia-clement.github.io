@@ -5,7 +5,7 @@ import writeup1Images from "../assets/SIEMpics/index.js";
 import writeup2Images from "../assets/Robotpics/index.js";
 
 export const writeups = [
-   // MR ROBOT CLONE
+   // MR ROBOT CLONE a
    {
     id: "robot-main",
     title: "Mr Robot Clone",
