@@ -5,14 +5,15 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/',   // 👈 REQUIRED for GitHub Pages
   build: {
-    target: 'esnext', // Use modern JavaScript syntax
-    minify: 'esbuild', // Use esbuild for faster builds
+    target: 'esnext',
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            return id.split('node_modules/')[1].split('/')[0]; // Split vendor chunks
+            return id.split('node_modules/')[1].split('/')[0];
           }
         },
       },
