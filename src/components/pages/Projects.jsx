@@ -7,7 +7,7 @@ const projects = [
     description:
       "Built an ELK-based detection lab that collects and correlates Linux host and network logs using Filebeat. Created detection rules and dashboards (failed logins, alert trends, top domains) to visualize events, triage alerts, and report true vs false positives like a SOC analyst.",
     tech: ["ELK Stack", "Filebeat", "Docker", "Linux"],
-    link: "/writeups/siem-intro",
+    //link: "/writeups/siem-intro",
     type: "blue",
   },
   {
@@ -26,7 +26,7 @@ const projects = [
       "Nmap", "Gobuster", "Nikto", "Hydra", "John", "Netcat", "SSH",
       "reverse shells", "SUID binaries", "CTF Design"
     ],
-    link: "writeups/robot-main",
+    //link: "writeups/robot-main",
     type: "red",
   },
   {
