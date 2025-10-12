@@ -7,7 +7,7 @@ const projects = [
     description:
       "Built an ELK-based detection lab that collects and correlates Linux host and network logs using Filebeat. Created detection rules and dashboards (failed logins, alert trends, top domains) to visualize events, triage alerts, and report true vs false positives like a SOC analyst.",
     tech: ["ELK Stack", "Filebeat", "Docker", "Linux"],
-    link: "https://jessica-sylvia-clement.github.io/writeups/siem-intro",
+    link: "/writeups/siem-intro",
     type: "blue",
   },
   {
