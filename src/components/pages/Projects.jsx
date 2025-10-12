@@ -7,7 +7,6 @@ const projects = [
     description:
       "Built an ELK-based detection lab that collects and correlates Linux host and network logs using Filebeat. Created detection rules and dashboards (failed logins, alert trends, top domains) to visualize events, triage alerts, and report true vs false positives like a SOC analyst.",
     tech: ["ELK Stack", "Filebeat", "Docker", "Linux"],
-    //link: "/writeups/siem-intro",
     type: "blue",
   },
   {
@@ -24,9 +23,7 @@ const projects = [
     tech: [
       "Python", "PHP", "Bash", "Linux", "WordPress", "Docker", "WP-CLI",
       "Nmap", "Gobuster", "Nikto", "Hydra", "John", "Netcat", "SSH",
-      "reverse shells", "SUID binaries", "CTF Design"
-    ],
-    //link: "writeups/robot-main",
+      "reverse shells", "SUID binaries", "CTF Design"],
     type: "red",
   },
   {
@@ -89,10 +86,9 @@ export default function Projects() {
               </h2>
               <span
                 className={`ml-3 px-3 py-1 rounded-full text-[0.7rem] sm:text-xs font-semibold tracking-wide whitespace-nowrap self-start sm:self-center
-                  ${
-                    p.type === "blue"
-                      ? "bg-blue-800 text-blue-200 border border-blue-400 shadow-[0_0_8px_rgba(0,0,255,0.6)]"
-                      : "bg-red-800 text-red-200 border border-red-400 shadow-[0_0_8px_rgba(255,0,0,0.6)]"
+                  ${p.type === "blue"
+                    ? "bg-blue-800 text-blue-200 border border-blue-400 shadow-[0_0_8px_rgba(0,0,255,0.6)]"
+                    : "bg-red-800 text-red-200 border border-red-400 shadow-[0_0_8px_rgba(255,0,0,0.6)]"
                   }`}
               >
                 {p.type === "blue" ? "DEFENSIVE" : "OFFENSIVE"}
