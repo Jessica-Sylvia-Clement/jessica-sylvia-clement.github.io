@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
 import ErrorBoundary from "./components/common/ErrorBoundary";
@@ -10,11 +10,11 @@ import App from "./App";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>
-      <HashRouter>
+      <BrowserRouter>
             <ErrorBoundary>
               <App />
             </ErrorBoundary>
-      </HashRouter>
+      </BrowserRouter>
     </HelmetProvider>
   </StrictMode>
 );
