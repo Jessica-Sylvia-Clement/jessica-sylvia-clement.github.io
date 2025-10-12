@@ -13,6 +13,7 @@ const Skills = lazy(() => import("./components/pages/Skills.jsx"));
 const Achievements = lazy(() => import("./components/pages/Home/MoreInfo.jsx"));
 const Articles = lazy(() => import("./components/pages/Articles.jsx"));
 const Contact = lazy(() => import("./components/pages/Contact.jsx"));
+const Projects = lazy(() => import("./components/pages/Projects.jsx"));
 const ChatBot = lazy(() => import("./components/pages/ChatBot.jsx"));
 const NotFound = lazy(() => import("./components/pages/NotFound.jsx"));
 
@@ -25,6 +26,7 @@ const routes = [
   { path: "/about", element: <Home /> },
   { path: "/skills", element: <Skills /> },
   { path: "/achievements", element: <Achievements /> },
+  { path: "/projects", element: <Projects /> },
   { path: "/writeups", element: <Articles /> },
 
   // main article

@@ -9,6 +9,7 @@ function Navbar() {
     { name: "About Me", path: "/about" },
     { name: "Skills", path: "/skills" },
     { name: "Achievements", path: "/achievements" },
+    { name: "Projects", path: "/projects" },
     { name: "Writeups", path: "/writeups" },
     { name: "Contact Me", path: "/contact" },
   ];

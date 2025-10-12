@@ -4,10 +4,11 @@ import SkillCard from "../SkillCard";
 
 function Skills() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-6 mt-10">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-6 mt-10 pb-20">
+      {/* 👆 Added pb-20 to create space below the last card */}
 
       {/* Skills Grid */}
-      <div className=" flex flex-col justify-center gap-4 max-w-2xl w-full">
+      <div className="flex flex-col justify-center gap-4 max-w-2xl w-full">
         {/* Programming Languages with badges */}
         <SkillCard
           title="Programming Languages"
