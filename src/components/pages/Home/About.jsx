@@ -18,14 +18,11 @@ function About() {
       {/* Bio Section */}
       <section className=" rounded-lg p-4 max-w-3xl w-full text-center">
         <p className="mb-4 text-lg">
-          I'm a Cybersecurity student 👩🏻‍🎓 with a passion for safeguarding
-          digital landscapes.
+        I’m a Cybersecurity graduate 👩🏻‍🎓 with a Master of Cyber Security from RMIT University, passionate about safeguarding modern digital landscapes.
         </p>
 
         <p className="mb-4 text-lg">
-          Currently, I'm immersed in the world of cyber defense, pursuing a
-          Master's in Cyber Security at RMIT University, where I'm sharpening my
-          skills to protect the digital realm 👩‍💻.
+        I bring hands-on experience across Digital Forensics and Incident Response (DFIR), governance, risk and compliance (GRC), foundational SOC operations, and cybersecurity research. Through both academic and industry exposure, I have developed a structured, analytical approach to identifying, investigating, and mitigating contemporary cyber threats.
         </p>
 
         <p className="mb-4 text-lg">
