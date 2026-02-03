@@ -10,7 +10,7 @@ import ArticleDetail from "./components/pages/ArticleDetail.jsx";
 // Lazy-loaded pages
 const Home = lazy(() => import("./components/pages/Home/Home.jsx"));
 const Skills = lazy(() => import("./components/pages/Skills.jsx"));
-const Achievements = lazy(() => import("./components/pages/Home/MoreInfo.jsx"));
+const Achievements = lazy(() => import("./components/pages/Home/Achievements.jsx"));
 const Articles = lazy(() => import("./components/pages/Articles.jsx"));
 const Contact = lazy(() => import("./components/pages/Contact.jsx"));
 const Projects = lazy(() => import("./components/pages/Projects.jsx"));

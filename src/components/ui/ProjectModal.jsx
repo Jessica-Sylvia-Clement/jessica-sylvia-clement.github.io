@@ -43,7 +43,7 @@ export default function ProjectModal({ project, onClose }) {
       >
         {/* HEADER */}
         <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700 shrink-0">
-          <h2 className="text-sm font-semibold text-green-300 truncate">
+          <h2 className="text-sm font-semibold text-green-400 truncate">
             {project.title}
           </h2>
           <button onClick={onClose} className="text-gray-300 hover:text-white">
@@ -115,7 +115,7 @@ export default function ProjectModal({ project, onClose }) {
           <div className="w-full md:w-1/2 p-4 flex flex-col">
 
             {/* Mobile title */}
-            <h2 className="md:hidden text-lg font-semibold text-green-300 mb-2">
+            <h2 className="md:hidden text-lg font-semibold text-green-400 mb-2">
               {project.title}
             </h2>
 
@@ -131,7 +131,7 @@ export default function ProjectModal({ project, onClose }) {
               "
             >
               {/* Desktop title */}
-              <h2 className="hidden md:block text-2xl font-semibold text-green-300 mb-4">
+              <h2 className="hidden md:block text-2xl font-semibold text-green-400 mb-4">
                 {project.title}
               </h2>
 

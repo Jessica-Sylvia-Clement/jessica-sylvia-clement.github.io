@@ -272,7 +272,7 @@ useEffect(() => {
           >
             {/* Title + Tag */}
             <div className="flex justify-between items-center mb-3">
-              <h2 className="text-2xl font-semibold text-green-300 flex-1">
+              <h2 className="text-2xl font-semibold text-green-400 flex-1">
                 {p.title}
               </h2>
               <span

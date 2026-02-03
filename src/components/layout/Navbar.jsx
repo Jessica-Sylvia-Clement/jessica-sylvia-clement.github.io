@@ -81,7 +81,7 @@ function Navbar() {
       {/* Mobile Navigation */}
       <div
         id="mobile-menu"
-        className={`md:hidden absolute top-full w-full p-6 transition duration-300 ease-in-out bg-black/90 text-white border-t border-yellow-300 transform transition-transform duration-300 ease-in-out  ${
+        className={`md:hidden absolute top-full w-full p-6 transition duration-300 ease-in-out bg-black/90 text-white border-t border-green-500 transform mt-4 md:mt-0 transition-transform duration-300 ease-in-out  ${
           menuOpen ? "block" : "hidden"
         }`}
         aria-label="Mobile Navigation Links"

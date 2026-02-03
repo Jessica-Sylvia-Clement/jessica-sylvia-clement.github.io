@@ -1,17 +1,23 @@
 import React from "react";
 import JessProfile from "../../../assets/JessProfile.jpeg";
+import MoreInfoCard from "../../MoreInfoCard";
+import { achievements } from "../../../data/achievements";
+
 
 function About() {
   return (
-    <div
-      className="
-        flex flex-col items-center gap-6
-        bg-gradient-to-t from-green-900 to-green-80
-        min-h-screen
-        pt-7 md:pt-28
-        pb-16
-      "
-    >
+    <div className="flex flex-col w-full">
+    {/* Green Section */}
+    <section className="
+  relative
+  flex flex-col items-center gap-6
+  bg-gradient-to-b
+  from-black
+  via-green-900/80
+  to-green-800
+  pt-7 md:pt-32
+  pb-10
+">  
       {/* Heading */}
       <h2 className="text-2xl md:text-6xl font-bold text-neutral-100">
         Hi I'm Jessica! 🙋🏻‍♀️
@@ -54,7 +60,21 @@ function About() {
           frontier.
         </p>
       </section>
-    </div>
+      {/* Achievements Highlights */}
+      </section>
+
+{/* Black Cut Section */}
+<section className="bg-black py-24">
+  <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {achievements
+      .filter((item) => item.showOnAbout)
+      .map((item) => (
+        <MoreInfoCard key={item.id} {...item} />
+      ))}
+  </div>
+</section>
+</div>
+
   );
 }
 
