@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/',   // 👈 REQUIRED for GitHub Pages
+  base: '/jessica-sylvia-clement.github.io/',
   build: {
     target: 'esnext',
     minify: 'esbuild',
@@ -20,3 +20,4 @@ export default defineConfig({
     },
   },
 })
+
