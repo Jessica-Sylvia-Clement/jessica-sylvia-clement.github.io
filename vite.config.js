@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/jessica-sylvia-clement.github.io/',
+  base: '/',
   build: {
     target: 'esnext',
     minify: 'esbuild',
