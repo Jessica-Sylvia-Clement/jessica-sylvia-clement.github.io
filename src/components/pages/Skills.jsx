@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCode, FaLightbulb, FaTools, FaLayerGroup } from "react-icons/fa";
+import { FaCode, FaLightbulb, FaTools, FaLayerGroup, FaProjectDiagram } from "react-icons/fa";
 import SkillCard from "../SkillCard";
 
 function Skills() {
@@ -26,20 +26,33 @@ function Skills() {
           badgeStyle={true}
           items={[
             "Risk Analysis",
+            "SOC",
+            "Incident Response",
+            "Digital Forensics",
             "Cloud Security",
             "Networking",
             "Cryptography",
-            "Web App Security",
-            "Cloud Architecture",
             "VAPT",
             "Ethical Hacking",
-            "Digital Forensics",
-            "SOC",
-            "Incident Response",
             "AI (NLP, Chatbots)",
-            "GRC (ISO/IEC 27001, NIST, APRA CPS 234)",
+            "GRC fundamentals",
           ]}
         />
+
+        {/* Frameworks */}
+<SkillCard
+  title="Frameworks"
+  icon={FaProjectDiagram}
+  shadowColor="rgba(168,85,247,0.7)" // Purple glow
+  badgeStyle={true}
+  items={[
+    "ISO/IEC 27001",
+    "NIST Cybersecurity Framework (CSF)",
+    "APRA CPS 234",
+    "COBIT 2019",
+  ]}
+/>
+
 
         {/* Tools with badges */}
         <SkillCard
@@ -56,8 +69,11 @@ function Skills() {
             "Wireshark",
             "Burp Suite",
             "LinPEAS",
-            "SIEM (Splunk/ELK)",
-            "AWS (EC2, S3, IAM)",
+            "Wazuh",
+            "ELK Stack",
+            "Splunk",
+            "Shuffle",
+            "TheHive",
             "FTK Imager",
             "Autopsy",
           ]}
