@@ -52,6 +52,7 @@ const getCooldownTimeLeft = (until) => {
     : `${seconds}s`;
 };
 
+
 /* ============================
    COMPONENT
 ============================ */
@@ -63,10 +64,6 @@ function ChatBot() {
 
   const [usageCount, setUsageCount] = useState(getUsage().count);
   const [rateLimitHits, setRateLimitHits] = useState(0);
-
-  /* ✅ NEW: generic failure counter */
-  const [failureHits, setFailureHits] = useState(0);
-
   const [cooldownTimeLeft, setCooldownTimeLeft] = useState("");
   const [cooldownUntil, setCooldownUntil] = useState(
     Number(localStorage.getItem(COOLDOWN_KEY)) || 0
@@ -98,17 +95,17 @@ function ChatBot() {
     }, 60000);
     return () => clearInterval(interval);
   }, []);
-
+  
   useEffect(() => {
     if (!isCooldownActive) return;
-
+  
     const interval = setInterval(() => {
       setCooldownTimeLeft(getCooldownTimeLeft(cooldownUntil));
     }, 1000);
-
+  
     return () => clearInterval(interval);
   }, [isCooldownActive, cooldownUntil]);
-
+  
   /* ============================
      CHAT HISTORY RESTORE
 ============================ */
@@ -156,12 +153,6 @@ function ChatBot() {
   /* ============================
      GEMINI API CALL
 ============================ */
-  const triggerCooldown = () => {
-    const until = Date.now() + COOLDOWN_MINUTES * 60 * 1000;
-    localStorage.setItem(COOLDOWN_KEY, until.toString());
-    setCooldownUntil(until);
-  };
-
   const callGeminiApi = async (userMessage) => {
     const aiPlaceholder = { role: "ai", text: "Thinking..." };
     setChatMessage((prev) => [...prev, aiPlaceholder]);
@@ -183,6 +174,9 @@ function ChatBot() {
           ],
         }),
       });
+      
+    
+    
 
       if (response.status === 429) throw new Error("RATE_LIMIT");
       if (!response.ok) throw new Error("API_ERROR");
@@ -195,28 +189,21 @@ function ChatBot() {
       const updated = { date: getToday(), count: usageCount + 1 };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
       setUsageCount(updated.count);
-
-      /* ✅ reset both counters on success */
       setRateLimitHits(0);
-      setFailureHits(0);
 
       setChatMessage((prev) => [
         ...prev.slice(0, -1),
         { role: "ai", text: botReply },
       ]);
     } catch (err) {
-      const isRateLimit = err.message === "RATE_LIMIT";
-
-      if (isRateLimit) {
+      if (err.message === "RATE_LIMIT") {
         setRateLimitHits((prev) => {
           const next = prev + 1;
-          if (next >= RATE_LIMIT_THRESHOLD) triggerCooldown();
-          return next;
-        });
-      } else {
-        setFailureHits((prev) => {
-          const next = prev + 1;
-          if (next >= RATE_LIMIT_THRESHOLD) triggerCooldown();
+          if (next >= RATE_LIMIT_THRESHOLD) {
+            const until = Date.now() + COOLDOWN_MINUTES * 60 * 1000;
+            localStorage.setItem(COOLDOWN_KEY, until.toString());
+            setCooldownUntil(until);
+          }
           return next;
         });
       }
@@ -225,9 +212,10 @@ function ChatBot() {
         ...prev.slice(0, -1),
         {
           role: "ai",
-          text: isRateLimit
-            ? "I’m getting a lot of requests right now. This question wasn’t counted. Please explore the site while things cool down."
-            : "I’m having trouble responding right now. Please try again in a few minutes.",
+          text:
+            err.message === "RATE_LIMIT"
+              ? "I’m getting a lot of requests right now. This question wasn’t counted. Please explore the site while things cool down."
+              : "Something went wrong. Please try again shortly.",
         },
       ]);
     }
@@ -268,7 +256,7 @@ function ChatBot() {
 
   /* ============================
      RENDER
- ============================ */
+============================ */
   return (
     <div className="flex flex-col items-center bg-neutral-950 p-4 w-full">
       <div
