@@ -25,27 +25,33 @@ export default function ToggleList({
           alignItems: "center",
         }}
       >
-        {/* Title block (prevents weird spacing) */}
+        {/* Title */}
         <div
           className="text-[1.25rem] font-semibold text-green-400 leading-snug text-left"
           style={{
             transform: `translateY(${textOffset})`,
-            flex: "1",            // take full width
-            whiteSpace: "normal", // allow wrapping
+            flex: "1",
+            whiteSpace: "normal",
             wordBreak: "break-word",
           }}
         >
           {title}
         </div>
 
-        {/* Arrow */}
+        {/* Caret Icon */}
         <span
-          className="ml-3 transition-transform duration-200 text-green-400 text-lg flex-shrink-0 flex items-center"
+          className={`
+            ml-3 flex items-center flex-shrink-0
+            transition-all duration-200
+            text-lg
+            ${isOpen ? "text-white-400" : "text-green-500"}
+          `}
           style={{
             transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
           }}
+          aria-hidden="true"
         >
-          <small>▶</small>
+          <i className="fa-solid fa-caret-right" />
         </span>
       </summary>
 

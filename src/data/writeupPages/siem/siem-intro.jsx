@@ -15,7 +15,7 @@ export default function SiemIntroContent() {
     return (
       <div className="space-y-6">
 {/* Section 1: What is SIEM */}
-<ToggleList title="What is SIEM?" index={0}>
+<ToggleList title="What is SIEM?" index={1}>
   <p style={{ fontSize: "1.0rem" }}>
     SIEM (Security Information and Event Management) is a centralized solution that helps detect,
     monitor, and analyze security incidents by collecting log data from multiple sources in real time.
