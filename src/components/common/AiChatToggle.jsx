@@ -35,24 +35,23 @@ function AiChatToggle() {
       <Link to="/ai_chat" aria-label="AI Chat">
         <button
           onClick={handleButtonClick}
-          className="flex items-center gap-2 px-4 py-2
-                     rounded-full bg-black border border-green-600
-                     cursor-pointer transition-all duration-300
-                     hover:scale-105 hover:border-green-500"
+          className="cursor-pointer flex items-center justify-center
+                     w-10 h-10 rounded-full
+                     transition-all duration-300
+                     hover:scale-110"
         >
-          <i className="fa-solid fa-robot text-green-500 text-lg" />
-          <span className="text-green-500 text-sm font-medium">
-            Ask me anything about Jess
-          </span>
+          <i className="fa-solid fa-robot text-green-500 text-2xl"></i>
         </button>
       </Link>
 
       {showNotification && (
         <div
           className="absolute left-1/2 -translate-x-1/2 mt-2
-                     text-green-500 bg-black/80
-                     text-sm px-3 py-1 rounded-lg
-                     border border-green-500 whitespace-nowrap"
+                     text-green-500 bg-black/70
+                     text-sm md:text-base
+                     px-3 py-1 rounded-full
+                     border border-green-500
+                     whitespace-nowrap"
         >
           Ask me anything about Jess
         </div>
