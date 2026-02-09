@@ -158,11 +158,8 @@ function ChatBot() {
     setChatMessage((prev) => [...prev, aiPlaceholder]);
 
     try {
-      const API_BASE =
-        window.location.hostname.includes("vercel.app")
-          ? ""
-          : "https://jessica-sylvia-clement-github-io.vercel.app";
-    
+      const API_BASE = "https://jessica-sylvia-clement-github-io.vercel.app";
+
       const response = await fetch(`${API_BASE}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -177,6 +174,7 @@ function ChatBot() {
           ],
         }),
       });
+      
     
     
 
