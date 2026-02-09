@@ -144,7 +144,7 @@ function ChatBot() {
     setChatMessage((prev) => [...prev, { role: "ai", text: "Thinking..." }]);
 
     try {
-      const API_BASE = "https://jessica-sylvia-clement-github-io.vercel.app";
+      const API_BASE = "https://jessica-sylvia-clement.vercel.app";
 
       /* ✅ SAFE SNAPSHOT */
       const conversation = [
