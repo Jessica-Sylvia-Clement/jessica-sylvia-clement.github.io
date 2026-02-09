@@ -47,9 +47,7 @@ const getCooldownTimeLeft = (until) => {
   const minutes = Math.floor(diffMs / (1000 * 60));
   const seconds = Math.floor((diffMs / 1000) % 60);
 
-  return minutes > 0
-    ? `${minutes}m ${seconds}s`
-    : `${seconds}s`;
+  return minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`;
 };
 
 /* ============================
@@ -63,8 +61,6 @@ function ChatBot() {
 
   const [usageCount, setUsageCount] = useState(getUsage().count);
   const [rateLimitHits, setRateLimitHits] = useState(0);
-
-  /* ✅ NEW: generic failure counter */
   const [failureHits, setFailureHits] = useState(0);
 
   const [cooldownTimeLeft, setCooldownTimeLeft] = useState("");
@@ -83,14 +79,13 @@ function ChatBot() {
     { label: "Contact", text: "How can I contact Jessica?" },
   ];
 
-  /* 🔑 SEPARATED STATES */
   const isDailyLimitReached = usageCount >= DAILY_LIMIT;
   const isCooldownActive = Date.now() < cooldownUntil;
   const isLocked = isDailyLimitReached || isCooldownActive;
   const remaining = Math.max(0, DAILY_LIMIT - usageCount);
 
   /* ============================
-     TIMER UPDATE
+     TIMERS
 ============================ */
   useEffect(() => {
     const interval = setInterval(() => {
@@ -101,16 +96,14 @@ function ChatBot() {
 
   useEffect(() => {
     if (!isCooldownActive) return;
-
     const interval = setInterval(() => {
       setCooldownTimeLeft(getCooldownTimeLeft(cooldownUntil));
     }, 1000);
-
     return () => clearInterval(interval);
   }, [isCooldownActive, cooldownUntil]);
 
   /* ============================
-     CHAT HISTORY RESTORE
+     CHAT HISTORY
 ============================ */
   useEffect(() => {
     const storedChat = localStorage.getItem(CHAT_STORAGE_KEY);
@@ -124,18 +117,12 @@ function ChatBot() {
     setUsageCount(getUsage().count);
   }, []);
 
-  /* ============================
-     CHAT HISTORY PERSIST
-============================ */
   useEffect(() => {
     if (chatMessage.length > 0) {
       localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(chatMessage));
     }
   }, [chatMessage]);
 
-  /* ============================
-     AUTO SCROLL
-============================ */
   useEffect(() => {
     if (isInitialLoad.current) {
       isInitialLoad.current = false;
@@ -145,16 +132,7 @@ function ChatBot() {
   }, [chatMessage]);
 
   /* ============================
-     LOCK MESSAGE (ONE-TIME)
-============================ */
-  const rateLimitMessage = {
-    role: "ai",
-    text:
-      "You’ve reached today’s chat limit. To learn more about Jessica, please explore the About Me, Skills, Projects, or Writeups sections using the site menu.",
-  };
-
-  /* ============================
-     GEMINI API CALL
+     GEMINI API CALL (FIXED)
 ============================ */
   const triggerCooldown = () => {
     const until = Date.now() + COOLDOWN_MINUTES * 60 * 1000;
@@ -163,25 +141,33 @@ function ChatBot() {
   };
 
   const callGeminiApi = async (userMessage) => {
-    const aiPlaceholder = { role: "ai", text: "Thinking..." };
-    setChatMessage((prev) => [...prev, aiPlaceholder]);
+    setChatMessage((prev) => [...prev, { role: "ai", text: "Thinking..." }]);
 
     try {
       const API_BASE = "https://jessica-sylvia-clement-github-io.vercel.app";
 
+      /* ✅ SAFE SNAPSHOT */
+      const conversation = [
+        {
+          role: "user",
+          parts: [{ text: PORTFOLIO_INSTRUCTIONS }],
+        },
+        ...chatMessage
+          .filter((m) => m.text && m.text.trim().length > 0)
+          .map((m) => ({
+            role: m.role === "user" ? "user" : "model",
+            parts: [{ text: m.text }],
+          })),
+        {
+          role: "user",
+          parts: [{ text: userMessage }],
+        },
+      ];
+
       const response = await fetch(`${API_BASE}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [
-            { role: "model", parts: [{ text: PORTFOLIO_INSTRUCTIONS }] },
-            ...chatMessage.map((msg) => ({
-              role: msg.role === "user" ? "user" : "model",
-              parts: [{ text: msg.text }],
-            })),
-            { role: "user", parts: [{ text: userMessage }] },
-          ],
-        }),
+        body: JSON.stringify({ contents: conversation }),
       });
 
       if (response.status === 429) throw new Error("RATE_LIMIT");
@@ -191,12 +177,10 @@ function ChatBot() {
       const botReply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
       if (!botReply) throw new Error("EMPTY_RESPONSE");
 
-      /* SUCCESS → count question */
       const updated = { date: getToday(), count: usageCount + 1 };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
       setUsageCount(updated.count);
 
-      /* ✅ reset both counters on success */
       setRateLimitHits(0);
       setFailureHits(0);
 
@@ -234,7 +218,7 @@ function ChatBot() {
   };
 
   /* ============================
-     SUBMIT HANDLER
+     HANDLERS
 ============================ */
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -242,12 +226,6 @@ function ChatBot() {
 
     if (isLocked) {
       setLockedPulse(true);
-
-      if (!localStorage.getItem(LIMIT_NOTICE_KEY) && isDailyLimitReached) {
-        setChatMessage((prev) => [...prev, rateLimitMessage]);
-        localStorage.setItem(LIMIT_NOTICE_KEY, "true");
-      }
-
       setTimeout(() => setLockedPulse(false), 600);
       return;
     }
@@ -257,9 +235,6 @@ function ChatBot() {
     callGeminiApi(message);
   };
 
-  /* ============================
-     QUICK BUTTON HANDLER
-============================ */
   const handleQuickAccessClick = (text) => {
     if (isLocked) return;
     setChatMessage((prev) => [...prev, { role: "user", text }]);
