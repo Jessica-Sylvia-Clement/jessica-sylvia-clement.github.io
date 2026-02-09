@@ -924,7 +924,7 @@ sudo systemctl status filebeat`}
   
   <span style={{ color: "#ffffff" }}>
       I’ll be writing about this soon, focusing on how to read logs properly, not
-      just how to collect them.
+      just how to collect them. 
     </span>
   </div>
 </Callout>
