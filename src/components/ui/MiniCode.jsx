@@ -8,10 +8,13 @@ export default function MiniCode({ children }) {
         padding: "0.2rem 0.4rem",
         borderRadius: "4px",
         fontSize: "0.85rem",
-        margin: "0.2rem 0.3rem 0.2rem 0", // top/bottom margin too
-        display: "inline-block", // each pill treated as its own block
-        whiteSpace: "nowrap",    // prevents breaking inside a pill
-        lineHeight: "1.2",       // gives breathing space when wrapping
+        margin: "0.2rem 0.3rem 0.2rem 0",
+        display: "inline",              // allow natural text wrapping
+        whiteSpace: "normal",            // allow wrapping
+        overflowWrap: "anywhere",        // break long tokens on mobile
+        wordBreak: "break-word",         // fallback for older browsers
+        lineHeight: "1.3",
+        maxWidth: "100%",                // never exceed container
       }}
     >
       {children}

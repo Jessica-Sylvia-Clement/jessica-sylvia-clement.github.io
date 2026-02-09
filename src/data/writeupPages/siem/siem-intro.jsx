@@ -911,7 +911,26 @@ sudo systemctl status filebeat`}
   <p style={{ fontSize: "1rem" }}>
     Nice work - you’ve got a live, working SIEM pipeline!
   </p>
+  <Callout type="important" style={{ marginTop: "0.75rem" }}>
+  <div style={{ marginTop: "0.5rem" }}>
+  Building labs is fun - spinning up VMs, deploying SIEMs, and triggering alerts
+  feels rewarding. But none of that matters if you don’t know how to read and
+  interpret logs.
+  <br /><br />
+  Whether logs are raw (JSON, syslog, Windows events) or visualised through a
+  SIEM, the real skill is understanding what the data is actually telling you.
+  Tools don’t find incidents - analysts do.
+  <br /><br />
+  
+  <span style={{ color: "#ffffff" }}>
+      I’ll be writing about this soon, focusing on how to read logs properly, not
+      just how to collect them.
+    </span>
+  </div>
+</Callout>
+
 </ToggleList>
+
 <div>
 <VictoryBox />
 </div>
