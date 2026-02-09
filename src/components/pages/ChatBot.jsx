@@ -158,7 +158,12 @@ function ChatBot() {
     setChatMessage((prev) => [...prev, aiPlaceholder]);
 
     try {
-      const response = await fetch("/api/chat", {
+      const API_BASE =
+        window.location.hostname.includes("vercel.app")
+          ? ""
+          : "https://jessica-sylvia-clement-github-io.vercel.app";
+    
+      const response = await fetch(`${API_BASE}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -172,6 +177,7 @@ function ChatBot() {
           ],
         }),
       });
+    
     
 
       if (response.status === 429) throw new Error("RATE_LIMIT");
