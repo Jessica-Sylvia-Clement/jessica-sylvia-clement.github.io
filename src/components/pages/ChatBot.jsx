@@ -268,7 +268,7 @@ function ChatBot() {
 
   /* ============================
      RENDER
- ============================ */
+============================ */
   return (
     <div className="flex flex-col items-center bg-neutral-950 p-4 w-full">
       <div
