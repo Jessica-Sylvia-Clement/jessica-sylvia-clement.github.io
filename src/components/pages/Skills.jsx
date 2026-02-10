@@ -15,7 +15,16 @@ function Skills() {
           icon={FaCode}
           shadowColor="rgba(255,165,0,0.7)" // Orange glow
           badgeStyle={true}
-          items={["HTML", "CSS", "MySQL", "Python", "R", "PHP"]}
+          items={[
+            { name: "HTML", level: "Strong" },
+            { name: "CSS", level: "Moderate" },
+            { name: "MySQL", level: "Moderate" },
+            { name: "Python", level: "Moderate" },
+            { name: "R", level: "Learning" },
+            { name: "PHP", level: "Learning" },
+          ]}
+          
+          
         />
 
         {/* Concepts as normal list */}
@@ -25,17 +34,17 @@ function Skills() {
           shadowColor="rgba(33,150,243,0.7)" // Blue glow
           badgeStyle={true}
           items={[
-            "Risk Analysis",
-            "SOC",
-            "Incident Response",
-            "Digital Forensics",
-            "Cloud Security",
-            "Networking",
-            "Cryptography",
-            "VAPT",
-            "Ethical Hacking",
-            "AI (NLP, Chatbots)",
-            "GRC fundamentals",
+              { name: "Risk Analysis", level: "Strong" },
+              { name: "SOC", level: "Strong" },
+              { name: "Incident Response", level: "Moderate" },
+              { name: "Digital Forensics", level: "Moderate" },
+              { name: "Cloud Security", level: "Learning" },
+              { name: "Networking", level: "Moderate" },
+              { name: "Cryptography", level: "Learning" },
+              { name: "VAPT", level: "Moderate" },
+              { name: "Ethical Hacking", level: "Moderate" },
+              { name: "AI (NLP, Chatbots)", level: "Learning" },
+              { name: "GRC fundamentals", level: "Moderate" },          
           ]}
         />
 
@@ -61,22 +70,27 @@ function Skills() {
           shadowColor="rgba(34,197,94,0.7)" // Green glow
           badgeStyle={true}
           items={[
-            "Linux",
-            "Docker",
-            "Kubernetes",
-            "Nmap",
-            "Hydra",
-            "Wireshark",
-            "Burp Suite",
-            "LinPEAS",
-            "Wazuh",
-            "ELK Stack",
-            "Splunk",
-            "Shuffle",
-            "TheHive",
-            "FTK Imager",
-            "Autopsy",
+            { name: "Linux", level: "Strong" },
+            { name: "Docker", level: "Moderate" },
+            { name: "Kubernetes", level: "Learning" },
+          
+            { name: "Nmap", level: "Strong" },
+            { name: "Hydra", level: "Learning" },
+            { name: "Wireshark", level: "Moderate" },
+            { name: "Burp Suite", level: "Learning" },
+            { name: "LinPEAS", level: "Learning" },
+          
+            { name: "Wazuh", level: "Moderate" },
+            { name: "ELK Stack", level: "Moderate" },
+            { name: "Splunk", level: "Learning" },
+          
+            { name: "Shuffle", level: "Learning" },
+            { name: "TheHive", level: "Moderate" },
+          
+            { name: "FTK Imager", level: "Learning" },
+            { name: "Autopsy", level: "Learning" },
           ]}
+          
         />
 
         {/* Others as normal list */}
@@ -86,11 +100,12 @@ function Skills() {
           shadowColor="rgba(255,235,59,0.7)" // Yellow glow
           badgeStyle={true}
           items={[
-            "Microsoft 365 Suite",
-            "Adobe Photoshop",
-            "Adobe Illustrator",
-            "Blender 3D",
+            { name: "Microsoft 365 Suite", level: "Strong" },
+            { name: "Adobe Photoshop", level: "Strong" },
+            { name: "Adobe Illustrator", level: "Learning" },
+            { name: "Blender 3D", level: "Moderate" },
           ]}
+          
         />
       </div>
     </div>

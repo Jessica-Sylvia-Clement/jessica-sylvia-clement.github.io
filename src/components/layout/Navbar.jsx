@@ -28,35 +28,44 @@ function Navbar() {
       >
         {/* Logo */}
         <Link
-          to="/"
-          className="text-md font-semibold text-neutral-300 hover:text-green-600 transition-colors duration-300"
-          aria-label="Go to Portfolio Home"
-        >
-          {location.pathname === "/" ? (
-            <h1 className="text-lg md:text-xl">
-              {/* Show short name on small screens, full name on md+ */}
-              <span className="block md:hidden">Jessica</span>
-              <span className="hidden md:block">Jessica Sylvia Clement</span>
-            </h1>
-          ) : (
-            <p className="text-lg md:text-xl">
-              <span className="block md:hidden">Jessica</span>
-              <span className="hidden md:block">Jessica Sylvia Clement</span>
-            </p>
-          )}
-        </Link>
+  to="/"
+  aria-label="Go to Portfolio Home"
+  className="text-md font-semibold text-neutral-300
+             transition-colors duration-300
+             hover:text-green-500"
+>
+  {location.pathname === "/" ? (
+    <h1 className="text-lg md:text-xl">
+      <span className="block md:hidden">Jessica</span>
+      <span className="hidden md:block">Jessica Sylvia Clement</span>
+    </h1>
+  ) : (
+    <p className="text-lg md:text-xl">
+      <span className="block md:hidden">Jessica</span>
+      <span className="hidden md:block">Jessica Sylvia Clement</span>
+    </p>
+  )}
+</Link>
+
 
         {/* Mobile Navigation Toggle Button */}
         <button
-          aria-label="Toggle mobile navigation menu"
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          type="button"
-          onClick={toggleMenu}
-          className="md:hidden cursor-pointer text-2xl"
-        >
-          <i className={`fa-solid ${menuOpen ? "fa-xmark" : "fa-bars"}`} />
-        </button>
+  aria-label="Toggle mobile navigation menu"
+  aria-expanded={menuOpen}
+  aria-controls="mobile-menu"
+  type="button"
+  onClick={toggleMenu}
+  className="group md:hidden cursor-pointer text-2xl
+             transition-transform duration-300
+             hover:scale-110"
+>
+  <i
+    className={`fa-solid ${
+      menuOpen ? "fa-xmark" : "fa-bars"
+    } text-white transition-colors duration-300
+      group-hover:text-green-500`}
+  />
+</button>
 
         {/* Desktop Navigation */}
         <ul

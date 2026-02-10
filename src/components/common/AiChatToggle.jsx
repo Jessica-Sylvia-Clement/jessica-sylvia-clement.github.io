@@ -32,17 +32,19 @@ function AiChatToggle() {
 
   return (
     <div className="fixed top-3 left-1/2 -translate-x-1/2 z-50">
-      <Link to="/ai_chat" aria-label="AI Chat">
-        <button
-          onClick={handleButtonClick}
-          className="cursor-pointer flex items-center justify-center
-                     w-10 h-10 rounded-full
-                     transition-all duration-300
-                     hover:scale-110"
-        >
-          <i className="fa-solid fa-robot text-white-500 text-2xl"></i>
-        </button>
-      </Link>
+    <Link to="/ai_chat" aria-label="AI Chat">
+      <button
+        onClick={handleButtonClick}
+        className="group cursor-pointer flex items-center justify-center
+                   w-10 h-10 rounded-full
+                   transition-all duration-300
+                   hover:scale-110"
+      >
+        <i className="fa-solid fa-ghost text-white text-2xl
+                      transition-colors duration-300
+                      group-hover:text-green-500"></i>
+      </button>
+    </Link>
 
       {showNotification && (
         <div

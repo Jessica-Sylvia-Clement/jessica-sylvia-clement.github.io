@@ -374,7 +374,7 @@ function ChatBot() {
       {/* Lock helper text */}
 
         {isDailyLimitReached && (
-          <p className="mt-2 text-[11px] text-neutral-400 text-center px-4 leading-relaxed">
+          <p className="mt-1 sm:mt-2 text-[9px] sm:text-[11px] text-neutral-400 text-center px-4 leading-relaxed">
             Explore the <span className="text-green-500">About</span>,{" "}
             <span className="text-green-500">Skills</span>,{" "}
             <span className="text-green-500">Projects</span> or{" "}

@@ -2,6 +2,7 @@ import React from "react";
 import JessProfile from "../../../assets/JessProfile.jpeg";
 import MoreInfoCard from "../../MoreInfoCard";
 import { achievements } from "../../../data/achievements";
+import CareerTimeline from "../../CareerTimeline";
 
 
 function About() {
@@ -34,24 +35,13 @@ function About() {
       <section className="rounded-lg p-4 max-w-3xl w-full text-center">
         <p className="mb-4 text-lg">
           I’m a Cybersecurity graduate 👩🏻‍🎓 with a Master of Cyber Security from
-          RMIT University, passionate about safeguarding modern digital
-          landscapes.
+          RMIT University, with hands-on experience across Digital Forensics and Incident
+          Response , governance, risk and compliance, foundational SOC
+          operations, and cybersecurity research. 
         </p>
 
         <p className="mb-4 text-lg">
-          I bring hands-on experience across Digital Forensics and Incident
-          Response (DFIR), governance, risk and compliance, foundational SOC
-          operations, and cybersecurity research. Through both academic and
-          industry exposure, I have developed a structured, analytical approach
-          to identifying, investigating, and mitigating contemporary cyber
-          threats.
-        </p>
-
-        <p className="mb-4 text-lg">
-          With a Bachelor's degree in Forensic Science, I bring a unique blend of
-          analytical thinking and attention to detail to cybersecurity. What
-          truly fascinates me is the evolving landscape of digital threats and
-          the diverse techniques we can employ to counter them.
+        With a background in Forensic Science, I bring strong analytical thinking and attention to detail to investigating and mitigating modern cyber threats.
         </p>
 
         <p className="mb-4 text-lg">
@@ -73,6 +63,9 @@ function About() {
       ))}
   </div>
 </section>
+{/* Career Timeline */}
+<CareerTimeline />
+
 </div>
 
   );
